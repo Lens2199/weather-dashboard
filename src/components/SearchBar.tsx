@@ -1,8 +1,11 @@
 import { TextField , Button, Box } from "@mui/material";
 import { useState } from "react";
 
+interface SearchBarProps{
+    onSearch: (city: string) => void;
+}
 
-function SearchBar() {
+function SearchBar({onSearch}: SearchBarProps) {
 
     const[city, setCity] = useState("");
 
@@ -15,7 +18,7 @@ function SearchBar() {
         onChange={(e) => setCity(e.target.value)}
         />
        
-       <Button variant="contained" onClick={() => console.log(city)}>Search</Button>
+       <Button variant="contained" onClick={() => onSearch(city)}>Search</Button>
         </Box>
     )
 
