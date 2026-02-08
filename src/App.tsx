@@ -4,6 +4,7 @@ import type { WeatherData } from "./types/weather";
 import WeatherCard from "./components/WeatherCard";
 import SearchHistory from "./components/SearchHistory";
 import { CircularProgress , Alert } from "@mui/material";
+import { Container, Typography, Grid, Paper } from "@mui/material";
 const API_KEY = import.meta.env.VITE_API_KEY;
 
 function App() {
@@ -39,14 +40,28 @@ function handleSearch(city: string){
 }
 
 return (
-    <div className="App">
-      <h1>Weather Dashboard</h1>
-      <SearchBar onSearch={handleSearch} />
-      <SearchHistory history={history} onSelect={handleSearch} />
-      {error && <Alert severity="error">{error}</Alert>}
-      {loading ? <CircularProgress /> : weather && <WeatherCard weather={weather} />}
-    </div>
+    <Container maxWidth="md">
+    <Typography variant="h3" align="center" gutterBottom>
+        Weather Dashboard
+    </Typography>
+
+    <SearchBar onSearch={handleSearch} />
+
+    {error && <Alert severity="error">{error}</Alert>}
+
+    <Grid container spacing={3} sx={{ mt: 2 }}>
+        <Grid size={4}>
+            <Paper sx={{ p: 2 }}>
+                <SearchHistory history={history} onSelect={handleSearch} />
+            </Paper>
+        </Grid>
+        <Grid size={8}>
+            {loading ? <CircularProgress /> : weather && <WeatherCard weather={weather} />}
+        </Grid>
+    </Grid>
+</Container>
   )
 }
 
 export default App
+
