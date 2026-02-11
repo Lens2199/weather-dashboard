@@ -21,10 +21,16 @@ function WeatherCard({ weather }: WeatherCardProps) {
           Feels Like: {weather.main.feels_like} °F
         </Typography>
 
+         
         <img
           src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
           alt={weather.weather[0].description}
         />
+
+        <Typography>
+           {weather.weather[0].description}
+        </Typography>
+
       </CardContent>
     </Card>
   );

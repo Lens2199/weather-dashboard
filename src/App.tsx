@@ -52,8 +52,11 @@ return (
     <Grid container spacing={3} sx={{ mt: 2 }}>
         <Grid size={4}>
             <Paper sx={{ p: 2 }}>
-                <SearchHistory history={history} onSelect={handleSearch} />
-            </Paper>
+                  <Typography variant="h6" gutterBottom>
+                          Search History
+                  </Typography>
+                    <SearchHistory history={history} onSelect={handleSearch} />
+                    </Paper>
         </Grid>
         <Grid size={8}>
             {loading ? <CircularProgress /> : weather && <WeatherCard weather={weather} />}
